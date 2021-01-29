@@ -38,12 +38,36 @@ a{
   @include text;
   color: $COLOR_ACCENT;
   text-decoration: none;
-  border-bottom: 2px solid transparent;
+  //border-bottom: 2px solid transparent;
   transition: all 0.2s;
+  position: relative;
   &:hover{
     color: $COLOR_HOVER;
-    border-color: $COLOR_HOVER;
+    //border-color: $COLOR_HOVER;
     text-decoration: none;
+    &:after{
+      width: 100%;
+    }
+  }
+  &:active{
+    color: $COLOR_PRESSED;
+    &:after{
+      //left: unset;
+      //right: 0;
+      background-color: $COLOR_PRESSED;
+      width: 90%;
+    }
+  }
+  &:after{
+    box-sizing: border-box;
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: $COLOR_HOVER;
+    transition: all 0.2s;
   }
 }
 ul{
@@ -102,7 +126,11 @@ dl{
       padding: 9.5px 14px;
       font-size: 14px;
     }
+    &:hover:not(.slick-disabled){
+      background-color: $COLOR_HOVER;
+    }
     &.slick-disabled{
+      cursor:default;
       background-color: $COLOR_SECONDARY;
     }
   }
@@ -164,9 +192,16 @@ dl{
         align-items: center;
         justify-content: space-between;
         
-        .container__logo {
+        .header__logo {
+          border: none;
           height: 45px;
           width: 228px;
+          &:hover{
+            border: none;
+          }
+          &:active{
+            border: none;
+          }
           @media (max-width: 479px){
             width: 160px;
             height: 31px;
@@ -177,7 +212,7 @@ dl{
             object-fit: contain;
           }
         }
-        .container__descriptor {
+        .header__descriptor {
           margin-left: 84px;
           @media (max-width: 1279px){
             text-align: center;
@@ -415,6 +450,7 @@ dl{
           position: absolute;
           bottom: 80px;
           right: 0;
+          z-index: 999999;
           #intro-slider-prev{
           }
           #intro-slider-next{

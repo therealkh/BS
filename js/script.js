@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         slidesToScroll: 1,
         prevArrow: '#intro-slider-prev',
         nextArrow: '#intro-slider-next',
+        fade: true
       });
       onSliderInit('.intro__slider');
     }
