@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'Loew Next';
+    src: url('LoewNext-Medium.eot');
+    src: url('LoewNext-Medium.eot?#iefix') format('embedded-opentype'),
+        url('LoewNext-Medium.woff2') format('woff2'),
+        url('LoewNext-Medium.woff') format('woff'),
+        url('LoewNext-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Loew Next';
+    src: url('LoewNext-Bold.eot');
+    src: url('LoewNext-Bold.eot?#iefix') format('embedded-opentype'),
+        url('LoewNext-Bold.woff2') format('woff2'),
+        url('LoewNext-Bold.woff') format('woff'),
+        url('LoewNext-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Loew Next';
+    src: url('LoewNext-ExtraBold.eot');
+    src: url('LoewNext-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('LoewNext-ExtraBold.woff2') format('woff2'),
+        url('LoewNext-ExtraBold.woff') format('woff'),
+        url('LoewNext-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+

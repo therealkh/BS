@@ -1,0 +1,73 @@
+@mixin max-text-lines($n) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: $n;
+  -webkit-box-orient: vertical;
+  line-clamp: $n;
+  box-orient: vertical;
+}
+@mixin h1 {
+  font-family: Loew Next;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 36px;
+  //line-height: 130%;
+  text-transform: uppercase;
+  color: #000000;
+  @media (max-width: 1023px){
+    font-size: 32px;
+    //line-height: 47px;
+  }
+  @media (max-width: 479px){
+    font-size: 18px;
+  }
+}
+@mixin h2 {
+  font-family: Loew Next;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 28px;
+  //line-height: 42px;
+  color: #000000;
+  @media (max-width: 1023px){
+    font-size: 20px;
+    //line-height: 30px;
+  }
+}
+@mixin h3 {
+  font-family: Loew Next;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  //line-height: 30px;
+  color: #000000;
+  @media (max-width: 1023px){
+    font-size: 16px;
+    line-height: 120%;
+  }
+}
+@mixin text {
+  font-family: Loew Next;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  //line-height: 160%;
+  color: #000000;
+  @media (max-width: 1023px){
+    font-size: 14px;
+  }
+}
+@mixin text-sm {
+  font-family: Loew Next;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 160%;
+  color: #000000;
+  @media (max-width: 1023px){
+    font-size: 12px;
+  }
+}
