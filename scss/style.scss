@@ -831,6 +831,69 @@ dl{
     }
   }
 }
+.counters {
+  .container {
+    .counters__wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @media (max-width: 767px){
+        flex-wrap: wrap;
+        margin: 0 23px;
+      }
+      @media (max-width: 479px){
+        justify-content: center;
+      }
+      .counters__counter {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 280px;
+        height: 233px;
+        @media (max-width: 1279px){
+          width: 220px;
+          height: 158px;
+        }
+        @media (max-width: 1023px){
+          width: 183px;
+          height: 130px;
+        }
+        @media (max-width: 767px){
+          margin-bottom: 30px;
+        }
+        @media (max-width: 479px){
+          margin: 0 0 30px 0;
+        }
+      }
+      span {
+        font-family: Loew Next;
+        font-style: normal;
+        font-weight: 800;
+        font-size: 80px;
+        text-align: center;
+        color: $COLOR_ACCENT;
+        @media (max-width: 1279px){
+          font-size: 50px;
+        }
+      }
+      p{
+        @include h3;
+        color: $COLOR_TEXT;
+        text-align: center;
+        margin-top: 30px;
+        @media (max-width: 1279px){
+          margin-top: 12px;
+          font-size: 18px;
+        }
+        @media (max-width: 1023px){
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
 
 
 

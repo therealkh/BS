@@ -14,6 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
   let unlock = true;
   let timeout = 400;
 
+  if (document.querySelector('.counters')) {
+    const spans = document.querySelectorAll('.counters__counter span');
+    spans.forEach((span) => {
+      span.closest('.counters__counter').setAttribute('data-number', span.textContent);
+      span.textContent = 0;
+    });
+  }
+
 
   $(document).ready(function () {
     if (document.querySelector('.intro__slider')) {
@@ -90,6 +98,55 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   window.addEventListener('resize', () => {
     Fresh();
+  })
+  window.addEventListener('scroll', () => {
+    if (document.querySelector('.counters')) {
+      const counters = document.querySelectorAll('.counters__counter');
+      counters.forEach((item) => {
+        let toTop = item.getBoundingClientRect().top;
+        if (toTop <= document.documentElement.clientHeight * 0.8) {
+          if (!item.getAttribute('data-started')) {
+            item.setAttribute('data-started', true);
+            const span = item.querySelector('span');
+            const countTo = parseInt(item.getAttribute('data-number'));
+            span.textContent = '0';
+            span.setAttribute('data-text', 0);
+
+            let duration = 2000; //ms
+            let stepDuration = 10; //ms
+            let steps = duration / stepDuration;
+
+            let countStep = countTo / steps;
+            let interval = setInterval(() => {
+
+              let spanText = parseFloat(span.getAttribute('data-text'));
+
+              if (spanText <= countTo) {
+                if ((countTo - spanText) < countStep) {
+                  spanText = countTo;
+                  span.textContent = spanText;
+                  span.setAttribute('data-text', spanText);
+                  clearInterval(interval);
+                }
+                else {
+                  spanText = spanText + countStep;
+                  console.log(spanText);
+                  span.setAttribute('data-text', spanText);
+                  span.textContent = Math.floor(spanText);
+                }
+              }
+              else {
+                spanText = countTo;
+                span.textContent = spanText;
+                span.setAttribute('data-text', spanText);
+                clearInterval(interval);
+              }
+            }, stepDuration);
+
+          }
+        }
+      })
+    }
   })
 
 
