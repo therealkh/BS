@@ -675,6 +675,7 @@ dl{
       }
       .events__slider-block {
         .events__slider-wrapper{
+          width: 100%;
           display: flex;
           flex-direction: column;
           align-items: flex-start;
@@ -702,11 +703,13 @@ dl{
               @media (max-width: 479px){
                 width: 280px;
               }
-              &:hover{
-                border-color: $COLOR_HOVER;
-                box-shadow: 10px 15px 20px rgba(0, 12, 168, 0.1);
-                & .slider-date{
-                  background-color: $COLOR_HOVER;
+              @media (min-width: 1024px){
+                &:hover{
+                  border-color: $COLOR_HOVER;
+                  box-shadow: 10px 15px 20px rgba(0, 12, 168, 0.1);
+                  & .slider-date{
+                    background-color: $COLOR_HOVER;
+                  }
                 }
               }
               .slider-date {
