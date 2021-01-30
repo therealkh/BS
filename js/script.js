@@ -27,6 +27,34 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       onSliderInit('.intro__slider');
     }
+    if (document.querySelector('.events__slider')) {
+      $('.events__slider').slick({
+        infinite: false,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        prevArrow: '#events-slider-prev',
+        nextArrow: '#events-slider-next',
+        variableWidth: true,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+            }
+          },
+        ]
+        //fade: true
+      });
+      onSliderInit('.events__slider');
+    }
     Fresh();
   });
 
@@ -81,13 +109,44 @@ document.addEventListener("DOMContentLoaded", () => {
     //init dots
     dotsCount.textContent = `1/${slidesCount}`;
     positionSliderControls(sliderSelector);
-    //on slider change
+    if (sliderSelector === '.events__slider') {
+      let lastActiveDot = '0';
+      for (let i = 0; i < slides.length; i++) {
+        if (slides[i].classList.contains('slick-active')) {
+          lastActiveDot = i + 1;
+        }
+      }
+      dotsCount.textContent = `${lastActiveDot}/${slidesCount}`;
+    }
+    //on slider change(before)
     $(sliderSelector).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
       dotsCount.textContent = `${nextSlide + 1}/${slidesCount}`
       positionSliderControls(sliderSelector, nextSlide);
-    });
-    //postioning dots and arrow
 
+      if (sliderSelector === '.events__slider') {
+        let lastActiveDot = '0';
+        console.log(slides);
+        for (let i = 0; i < slides.length; i++) {
+          if (slides[i].classList.contains('slick-active')) {
+            lastActiveDot = i + 1;
+          }
+        }
+        dotsCount.textContent = `${lastActiveDot}/${slidesCount}`;
+      }
+    });
+    //on slider change(after)
+    $(sliderSelector).on('afterChange', function (event, slick, currentSlide, nextSlide) {
+      if (sliderSelector === '.events__slider') {
+        let lastActiveDot = '0';
+        for (let i = 0; i < slides.length; i++) {
+          if (slides[i].classList.contains('slick-active')) {
+            lastActiveDot = i + 1;
+            //console.log(1231);
+          }
+        }
+        dotsCount.textContent = `${lastActiveDot}/${slidesCount}`;
+      }
+    });
   }
   function positionSliderControls(sliderSelector, nextSlide = 0) {
     const slickSlider = document.querySelector(sliderSelector);
