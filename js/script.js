@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+  document.body.onload = () => {
+    Fresh();
+  }
+  Fresh();
   const ppOpeners = document.querySelectorAll('.popup-open');
   const ppClosers = document.querySelectorAll('.popup-close');
   const popups = document.querySelectorAll('.popup');
@@ -10,10 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuBtn = document.querySelector('.menu-btn');
   const menuMobile = document.querySelector('.header__menu-mobile');
 
-  let isMobileMenu = false;
   let unlock = true;
   let timeout = 400;
-
   if (document.querySelector('.counters')) {
     const spans = document.querySelectorAll('.counters__counter span');
     spans.forEach((span) => {
@@ -62,6 +64,34 @@ document.addEventListener("DOMContentLoaded", () => {
         //fade: true
       });
       onSliderInit('.events__slider');
+    }
+    if (document.querySelector('.popular__slider')) {
+      $('.popular__slider').slick({
+        infinite: false,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        prevArrow: '#popular-slider-prev',
+        nextArrow: '#popular-slider-next',
+        variableWidth: true,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+            }
+          },
+        ]
+        //fade: true
+      });
+      onSliderInit('.popular__slider');
     }
     Fresh();
   });
@@ -130,7 +160,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 else {
                   spanText = spanText + countStep;
-                  console.log(spanText);
                   span.setAttribute('data-text', spanText);
                   span.textContent = Math.floor(spanText);
                 }
@@ -175,25 +204,33 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       dotsCount.textContent = `${lastActiveDot}/${slidesCount}`;
     }
+    if (sliderSelector === '.popular__slider') {
+      let lastActiveDot = '0';
+      for (let i = 0; i < slides.length; i++) {
+        if (slides[i].classList.contains('slick-active')) {
+          lastActiveDot = i + 1;
+        }
+      }
+      dotsCount.textContent = `${lastActiveDot}/${slidesCount}`;
+    }
     //on slider change(before)
     $(sliderSelector).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
       dotsCount.textContent = `${nextSlide + 1}/${slidesCount}`
       positionSliderControls(sliderSelector, nextSlide);
-
-      if (sliderSelector === '.events__slider') {
-        let lastActiveDot = '0';
-        console.log(slides);
-        for (let i = 0; i < slides.length; i++) {
-          if (slides[i].classList.contains('slick-active')) {
-            lastActiveDot = i + 1;
-          }
-        }
-        dotsCount.textContent = `${lastActiveDot}/${slidesCount}`;
-      }
     });
     //on slider change(after)
     $(sliderSelector).on('afterChange', function (event, slick, currentSlide, nextSlide) {
       if (sliderSelector === '.events__slider') {
+        let lastActiveDot = '0';
+        for (let i = 0; i < slides.length; i++) {
+          if (slides[i].classList.contains('slick-active')) {
+            lastActiveDot = i + 1;
+            //console.log(1231);
+          }
+        }
+        dotsCount.textContent = `${lastActiveDot}/${slidesCount}`;
+      }
+      if (sliderSelector === '.popular__slider') {
         let lastActiveDot = '0';
         for (let i = 0; i < slides.length; i++) {
           if (slides[i].classList.contains('slick-active')) {
