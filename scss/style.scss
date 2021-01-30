@@ -644,6 +644,7 @@ dl{
 .events {
   .container {
     .events__wrapper {
+      width: 100%;
       display: flex;
       flex-direction: column;
       .events__top {
@@ -674,6 +675,7 @@ dl{
         }
       }
       .events__slider-block {
+        width: 100%;
         .events__slider-wrapper{
           width: 100%;
           display: flex;
