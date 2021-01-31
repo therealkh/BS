@@ -33,7 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
         slidesToScroll: 1,
         prevArrow: '#intro-slider-prev',
         nextArrow: '#intro-slider-next',
-        fade: true
+        fade: true,
+        speed: 1000
       });
       onSliderInit('.intro__slider');
     }
@@ -92,6 +93,18 @@ document.addEventListener("DOMContentLoaded", () => {
         //fade: true
       });
       onSliderInit('.popular__slider');
+    }
+    if (document.querySelector('.speakers__slider')) {
+      $('.speakers__slider').slick({
+        infinite: false,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        prevArrow: '#speakers-slider-prev',
+        nextArrow: '#speakers-slider-next',
+        fade: true,
+        speed: 1000
+      });
+      onSliderInit('.speakers__slider');
     }
     Fresh();
   });
@@ -213,10 +226,52 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       dotsCount.textContent = `${lastActiveDot}/${slidesCount}`;
     }
+    if (sliderSelector === '.speakers__slider') {
+      let lastActiveDot = '0';
+      for (let i = 0; i < slides.length; i++) {
+        if (slides[i].classList.contains('slick-active')) {
+          lastActiveDot = i + 1;
+        }
+      }
+      dotsCount.textContent = `${lastActiveDot}/${slidesCount}`;
+
+      slides.forEach((slide) => {
+        slide.addEventListener('click', () => {
+          slide.classList.toggle('opened');
+          if (slide.classList.contains('opened')) {
+            sliderWrapper.querySelector('.slider-np').style.zIndex = 998;
+          }
+          else {
+            sliderWrapper.querySelector('.slider-np').style.zIndex = '';
+          }
+        })
+      })
+
+    }
     //on slider change(before)
     $(sliderSelector).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
       dotsCount.textContent = `${nextSlide + 1}/${slidesCount}`
       positionSliderControls(sliderSelector, nextSlide);
+      if (sliderSelector === '.events__slider') {
+        let lastActiveDot = '0';
+        for (let i = 0; i < slides.length; i++) {
+          if (slides[i].classList.contains('slick-active')) {
+            lastActiveDot = i + 1;
+            //console.log(1231);
+          }
+        }
+        dotsCount.textContent = `${lastActiveDot}/${slidesCount}`;
+      }
+      if (sliderSelector === '.popular__slider') {
+        let lastActiveDot = '0';
+        for (let i = 0; i < slides.length; i++) {
+          if (slides[i].classList.contains('slick-active')) {
+            lastActiveDot = i + 1;
+            //console.log(1231);
+          }
+        }
+        dotsCount.textContent = `${lastActiveDot}/${slidesCount}`;
+      }
     });
     //on slider change(after)
     $(sliderSelector).on('afterChange', function (event, slick, currentSlide, nextSlide) {
@@ -255,9 +310,19 @@ document.addEventListener("DOMContentLoaded", () => {
       arrows.style.bottom = bottom + 'px';
       dots.style.bottom = (bottom - 50) + 'px';
     }
+    if (sliderSelector === '.speakers__slider') {
+      const arrows = sliderWrapper.querySelector('.slider-np');
+      const dots = sliderWrapper.querySelector('.slider-dots');
+      const sliderImg = slides[nextSlide].querySelector('.slider-item__img');
+      let bottom = sliderWrapper.getBoundingClientRect().bottom - sliderImg.getBoundingClientRect().bottom;
+
+      arrows.style.bottom = bottom + 'px';
+      dots.style.bottom = (bottom - 50) + 'px';
+    }
   }
   function Fresh() {
     positionSliderControls('.intro__slider');
+    positionSliderControls('.speakers__slider');
   }
 
 
