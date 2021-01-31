@@ -733,8 +733,8 @@
         <div class="footer__left">
           <p>Подпишитесь на наши обновления чтобы узнавать все новости первыми</p>
           <form id="subscribe">
-            <input type="mail" placeholder="Email">
-            <button type="submit">Подписаться</button>
+            <input type="mail" id="mail" name="mail" placeholder="Email">
+            <button type="submit" form="subscribe" id="formSubmit">Подписаться</button>
           </form>
           <div class="socials">
             <a href="#">Instagram</a>
@@ -775,9 +775,9 @@
           <div class="form-popup__form form">
             <div class="form__title">Заполните заявку и мы с вами свяжемся</div>
             <form id="sendForm">
-              <input id="name" type="text" placeholder="Фамилия Имя" required>
-              <input id="email" type="mail" placeholder="Email" required>
-              <input id="phone" type="tel" placeholder="Номер телефона" required>
+              <input id="name" name="name" type="text" placeholder="Фамилия Имя" required>
+              <input id="email" name="email" type="mail" placeholder="Email" required>
+              <input id="phone" name="phone" type="tel" placeholder="Номер телефона" required>
               <button type="submit" class="theme-btn" form="sendForm" id="formSubmit">Получить</button>
             </form>
           </div>

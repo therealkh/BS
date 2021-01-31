@@ -29,6 +29,13 @@ document.addEventListener("DOMContentLoaded", () => {
       send(form, event, 'mailer/sendForm.php', 'Спасибо! Ваша заявка была отправлена.')
     }
   }
+  if (document.querySelector('form#subscribe')) {
+    form = document.querySelector('form#subscribe');
+    form.onsubmit = (event) => {
+      event.preventDefault();
+      send(form, event, 'mailer/subscribe.php', 'Теперь вы будете получать рассылку новостей от Бизнес Среды')
+    }
+  }
 
   let unlock = true;
   let timeout = 400;
