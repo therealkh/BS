@@ -113,6 +113,24 @@ button[disabled]{
   background-color: $COLOR_TEXT_SECONDARY!important;
   color: $COLOR_WHITE!important;
 }
+input{
+  background-color: transparent;
+  border: none;
+  border-bottom: 4px solid $COLOR_SECONDARY;
+  width: 276px;
+  padding: 12px;
+  font-size: 18px;
+  transition: all 0.2;
+  
+  &::placeholder{
+    color: $COLOR_TEXT_SECONDARY;
+    font-family: Loew Next;
+    font-size: 18px;
+  }
+  &:focus{
+    border-color: $COLOR_ACCENT;
+  }
+}
 
 p{
   margin: 0;
@@ -735,6 +753,9 @@ dl{
   opacity: 1;
   transition: all 0.3s;
   margin-bottom: 30px;
+  &.empty{
+    border: none;
+  }
   @media (max-width: 1279px){
     width: 307px;
     margin-right: 20px;
@@ -749,7 +770,7 @@ dl{
     width: 280px;
   }
   @media (min-width: 1024px){
-    &:hover{
+    &:not(.empty):hover{
       border-color: $COLOR_HOVER;
       box-shadow: 10px 15px 20px rgba(0, 12, 168, 0.1);
       & .slider-date{
@@ -855,6 +876,9 @@ dl{
   opacity: 1;
   transition: all 0.3s;
   margin-bottom: 30px;
+  &.empty{
+    border: none;
+  }
   @media (max-width: 1279px){
     width: 307px;
     margin-right: 20px;
@@ -869,7 +893,7 @@ dl{
     width: 280px;
   }
   @media (min-width: 1024px){
-    &:hover{
+    &:not(.empty):hover{
       border-color: $COLOR_HOVER;
       box-shadow: 10px 15px 20px rgba(0, 12, 168, 0.1);
       & .slider-date{
@@ -982,6 +1006,9 @@ dl{
         transition: all 0.3s;
         margin-bottom: 30px;
         overflow: hidden;
+        &.empty{
+          border: none;
+        }
         @media (max-width: 1279px){
           width: 307px;
           margin-right: 20px;
@@ -996,7 +1023,7 @@ dl{
           width: 280px;
         }
         @media (min-width: 1024px){
-          &:hover{
+          &:not(.empty):hover{
             border-color: $COLOR_HOVER;
             box-shadow: 10px 15px 20px rgba(0, 12, 168, 0.1);
             & .slider-date{
@@ -1060,12 +1087,17 @@ dl{
           height: 100%;
           background-color: $COLOR_WHITE;
           padding: 20px;
-          transform: translateX(-100%);
+          //transform: translateX(-100%);
           opacity: 0;
+          visibility: hidden;
           transition: all 0.5s;
           ul {
+            list-style-image: url('../img/UIKit/list-style.svg');
+            @media (max-width: 767px){
+              list-style-image: url('../img/UIKit/list-style-sm.svg');
+            }
             li {
-              padding-left: 58px;
+              margin-left: 30px;
               @include text;
               color: $COLOR_TEXT;
               position: relative;
@@ -1078,33 +1110,35 @@ dl{
               @media (max-width: 479px){
                 font-size: 12px;
               }
-              &:before{
-                content: '';
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                left: 19px;
-                width: 10px;
-                height: 10px;
-                background-image: url('../img/UIKit/list-style.svg');
-                background-repeat: no-repeat;
-                background-position: center center;
-                background-size: contain;
-              }
+              //&:before{
+              //  content: '';
+              //  position: absolute;
+              //  top: 50%;
+              //  transform: translateY(-50%);
+              //  left: 19px;
+              //  width: 10px;
+              //  height: 10px;
+              //  background-image: url('../img/UIKit/list-style.svg');
+              //  background-repeat: no-repeat;
+              //  background-position: center center;
+              //  background-size: contain;
+              //}
             }
           }
         }
         &:hover{
           @media (min-width: 1025px){
             & .slider-list{
-              transform: translateX(0);
+              //transform: translateX(0);
               opacity: 1;
+              visibility: visible;
             }
           }
         }
         &.opened{
           & .slider-list{
-            transform: translateX(0);
+            visibility: visible;
+            //transform: translateX(0);
             opacity: 1;
           }
         }
@@ -1615,8 +1649,12 @@ dl{
                 height: 174px;
               }
               ul {
+                list-style-image: url('../img/UIKit/list-style.svg');
+                @media (max-width: 767px){
+                  list-style-image: url('../img/UIKit/list-style-sm.svg');
+                }
                 li {
-                  padding-left: 58px;
+                  margin-left: 30px;
                   @include text;
                   color: $COLOR_TEXT;
                   position: relative;
@@ -1629,19 +1667,19 @@ dl{
                   @media (max-width: 479px){
                     font-size: 12px;
                   }
-                  &:before{
-                    content: '';
-                    position: absolute;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    left: 19px;
-                    width: 10px;
-                    height: 10px;
-                    background-image: url('../img/UIKit/list-style.svg');
-                    background-repeat: no-repeat;
-                    background-position: center center;
-                    background-size: contain;
-                  }
+                  //&:before{
+                  //  content: '';
+                  //  position: absolute;
+                  //  top: 50%;
+                  //  transform: translateY(-50%);
+                  //  left: 19px;
+                  //  width: 10px;
+                  //  height: 10px;
+                  //  background-image: url('../img/UIKit/list-style.svg');
+                  //  background-repeat: no-repeat;
+                  //  background-position: center center;
+                  //  background-size: contain;
+                  //}
                 }
               }
             }
@@ -1697,7 +1735,7 @@ dl{
             color: $COLOR_WHITE;
             position: absolute;
             top: 24px;
-            left: 624px;
+            left: 605px;
             @media (max-width: 1279px){
               left: 515px;
             }
@@ -1872,6 +1910,7 @@ dl{
           position: absolute;
           right: 0;
           bottom: 0;
+          z-index: 1000;
           #reviews-slider-prev.slider-btn {
             &:hover {}
             &:active {}
@@ -1951,6 +1990,9 @@ dl{
               width: 100%;
               margin-bottom: 12px;
             }
+            &:hover{
+              border-color: $COLOR_ACCENT;
+            }
           }
           button{
             border: none;
@@ -1963,6 +2005,14 @@ dl{
           }
           & input:focus + button{
             background-color: $COLOR_ACCENT;
+          }
+          &:hover{
+            input{
+              border-color: $COLOR_HOVER;
+            }
+            button{
+              background-color: $COLOR_HOVER;
+            }
           }
         }
         .socials {
@@ -2380,24 +2430,7 @@ a.theme-btn-b, button.theme-btn-b{
   }
 }
 
-input{
-  background-color: transparent;
-  border: none;
-  border-bottom: 4px solid $COLOR_SECONDARY;
-  width: 276px;
-  padding: 12px;
-  font-size: 18px;
-  transition: all 0.2;
-  
-  &::placeholder{
-    color: $COLOR_TEXT_SECONDARY;
-    font-family: Loew Next;
-    font-size: 18px;
-  }
-  &:focus{
-    border-color: $COLOR_ACCENT;
-  }
-}
+
 
 .select {
   //border: 1px solid red;

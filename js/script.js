@@ -137,8 +137,8 @@ document.addEventListener("DOMContentLoaded", () => {
         prevArrow: '#reviews-slider-prev',
         nextArrow: '#reviews-slider-next',
         //variableWidth: true,
-        //fade: true,
-        speed: 700
+        fade: true,
+        speed: 1000
       });
       onSliderInit('.reviews__slider');
     }
