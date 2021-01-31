@@ -13,6 +13,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const menuBtn = document.querySelector('.menu-btn');
   const menuMobile = document.querySelector('.header__menu-mobile');
+  let speakersPageItems;
+  if (document.querySelector('.speakers-page')) {
+    speakersPageItems = document.querySelectorAll('.speakers__slider-item');
+    speakersPageItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('opened');
+      })
+    })
+  }
+  if (document.querySelector('form#sendForm')) {
+    form = document.querySelector('form#sendForm');
+    form.onsubmit = (event) => {
+      event.preventDefault();
+      send(form, event, 'mailer/sendForm.php', 'Спасибо! Ваша заявка была отправлена.')
+    }
+  }
 
   let unlock = true;
   let timeout = 400;
@@ -353,8 +369,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   function Fresh() {
-    positionSliderControls('.intro__slider');
-    positionSliderControls('.speakers__slider');
+    if (document.querySelector('.intro__slider')) {
+      positionSliderControls('.intro__slider');
+    }
+    if (document.querySelector('.speakers__slider')) {
+      positionSliderControls('.speakers__slider');
+    }
+    if (document.querySelector('.reviews__slider')) {
+      positionSliderControls('.reviews__slider');
+    }
   }
 
 
@@ -468,6 +491,7 @@ document.addEventListener("DOMContentLoaded", () => {
   })
   //Functions
   function send(form, event, php, succesMSG) {
+    console.log(form);
     const btn = form.querySelector('#formSubmit');
 
     const oldTextContent = btn.textContent;
