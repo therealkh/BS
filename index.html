@@ -22,7 +22,7 @@
     <div class="container">
       <div class="header__wrapper">
         <div class="header__info">
-          <a href="index.html" class="header__logo not-link">
+          <a href="#form" class="header__logo not-link popup-open">
             <img src="img/logo.png" alt="">
           </a>
           <div class="header__descriptor">
@@ -770,20 +770,15 @@
     <div class="popup__body">
       <div class="popup__content">
         <div class="form-popup">
-          <div class="form-popup__title">Получите от нас коммерческое предложение или бесплатную экскурсию по объектам
-          </div>
+          <div class="form-popup__title">БЕСПЛАТНАЯ КОНСУЛЬТАЦИЯ</div>
+          <div class="form-popup__descriptor">Получите консультацию от наших менеджеров бесплатно</div>
           <div class="form-popup__form form">
-            <div class="form__title">Мы свяжемся с Вами</div>
+            <div class="form__title">Заполните заявку и мы с вами свяжемся</div>
             <form id="sendForm">
-              <div class="form__name">
-                <label for="name">Фамилия Имя</label>
-                <input id="name" type="text" placeholder="Фамилия Имя" required>
-              </div>
-              <div class="form__phone">
-                <label for="phone">Номер телефона</label>
-                <input id="phone" type="tel" placeholder="Номер телефона" required>
-              </div>
-              <button type="submit" class="theme-btn" form="sendForm">Получить предложение</button>
+              <input id="name" type="text" placeholder="Фамилия Имя" required>
+              <input id="email" type="mail" placeholder="Email" required>
+              <input id="phone" type="tel" placeholder="Номер телефона" required>
+              <button type="submit" class="theme-btn" form="sendForm">Получить</button>
             </form>
           </div>
 
