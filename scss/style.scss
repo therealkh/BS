@@ -1996,8 +1996,8 @@ dl{
               width: 100%;
               margin-bottom: 12px;
             }
-            &:hover{
-              border-color: $COLOR_ACCENT;
+            &:focus{
+              border-color: $COLOR_HOVER;
             }
           }
           button{
@@ -2008,15 +2008,7 @@ dl{
             @include h3;
             color: $COLOR_WHITE;
             transition: all 0.2s;
-          }
-          & input:focus + button{
-            background-color: $COLOR_ACCENT;
-          }
-          &:hover{
-            input{
-              border-color: $COLOR_HOVER;
-            }
-            button{
+            &:hover{
               background-color: $COLOR_HOVER;
             }
           }
